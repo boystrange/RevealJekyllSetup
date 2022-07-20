@@ -17,10 +17,9 @@ All'interno del file, ogni slide consiste in un'intestazione di
 primo livello (`#`, opzionale) seguita dal contenuto della slide.
 
 Slide diverse possono essere **separate** una dall'altra da una
-sequenza `%%%`.
+riga che inizia con `---`.
 
-%%%
-
+---
 # Formule inline
 
 È possibile inserire **formule matematiche** come $\sin\alpha^2$ nel
@@ -33,8 +32,7 @@ $\sin\alpha^2$
 
 nel testo.
 
-%%%
-
+---
 # Formule display
 
 Se si vuole inserire una formula in modo *display*, occorre
@@ -53,8 +51,7 @@ $$`
 $$`
 ```
 
-%%%
-
+---
 # Codice
 
 Il codice si inserisce racchiudendolo entro tre backtick. La

@@ -1,49 +1,69 @@
 ---
 layout: slides
+title:  A title for this block of slides
 ---
 
-# Introduzione
+{% include title_slide.md %}
 
-Per scrivere un **blocco di slide**, creare un file con estensione
-`.md` e la seguente intestazione:
+# Slide deck
+
+To create a new **slide deck**, create a file with extension `.md`
+and the following YAML header:
 
 ``` md
 ---
 layout: slides
+title:  ...deck title...
 ---
 ```
 
-All'interno del file, ogni slide consiste in un'intestazione di
-primo livello (`#`, opzionale) seguita dal contenuto della slide.
+Within that file, each slide consists of a level 1 header (`#`,
+optional) followed by the content of the slide.
 
-Slide diverse possono essere **separate** una dall'altra da una
-riga che inizia con `---`.
+Different slides are **separated** by a line beginning with `---`.
 
 ---
-# Formule inline
+# First slide
 
-È possibile inserire **formule matematiche** come $\sin\alpha^2$ nel
-testo racchiudendone il codice `LaTeX` in una coppia di simboli
-`$`. Per esempio, la formula è stata ottenuta scrivendo
+The first slide is usually different, as it provides information
+about the collection it belongs to and the slide deck it begins. To
+include this slide in a slide deck use
+
+``` md
+{% raw %}{% include title_slide.md %}{% endraw %}
+```
+
+As we have seen, the `title` field in the YAML header of the slide
+deck can be used to specify the title of the deck. Further
+customization is possible by editing the file `title_slide.md` in
+the `_includes` folder.
+
+---
+# Inline math
+
+**Mathematical formulas** such as $\sin\alpha^2$ can be used in the
+text by enclosing the corresponding `LaTeX` markup within `$`.
 
 ``` tex
-$\sin\alpha^2$
+**Mathematical formulas** such as $\sin\alpha^2$ can be
+used in the text by enclosing the corresponding `LaTeX`
+markup within `$`.
 ```
 
-nel testo.
-
 ---
-# Formule display
+# Displayed math
 
-Se si vuole inserire una formula in modo *display*, occorre
-racchiuderla tra `` `$$ `` e `` $$` `` (notare il *backtick extra*
-prima e dopo i `$$`). Per esempio, la formula
+**Displayed formulas** must occur in a paragraph of their own
+enclosed by `` `$$ `` and `` $$` `` (note the *extra backtick*
+before and after the `$$`).
+
+For example, the formula
 
 `$$
   \int_0^\infty f(x)
 $$`
 
-è ottenuta con il codice
+is obtained with
 
 ``` tex
 `$$
@@ -52,22 +72,21 @@ $$`
 ```
 
 ---
-# Codice
+# Code
 
-Il codice si inserisce racchiudendolo entro tre backtick. La
-sequenza di apertura di backtick è seguita dal nome del linguaggio
-di programmazione usato nel codice.
+Displayed code must be enclosed by three backticks. The opening
+sequence of backticks is followed by the name of the programming
+language in which the code is written.
 
-## Esempio di codice Java
+## Example of Java method
 
 ```java
-public class Main {
-	private int x;
-	private int y; // questo è privato
+public static int fibo(int n) {
+	return n <= 1 ? n : fibo(n - 1) + fibo(n - 2);
 }
 ```
 
-## Esempio di codice Haskell
+## Example of Haskell function
 
 ``` haskell
 fibo :: Int -> Int
